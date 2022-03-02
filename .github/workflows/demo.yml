@@ -1,0 +1,22 @@
+name: Cluster-check
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: echo "Hello, world!"
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          service_account: ${{ secrets.GCP_SA_EMAIL }}
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+      - name: check
+        run: . test.sh
