@@ -1,1 +1,1 @@
-gcloud container clusters create sample --zone=us-central1-a
+gcloud container clusters create git --zone=us-central1-a
