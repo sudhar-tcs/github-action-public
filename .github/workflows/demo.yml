@@ -1,6 +1,10 @@
 name: Cluster-check
 
-on: push
+on: |
+    [push, fork]
+    pull_request:
+      branches:    
+      - main
 
 jobs:
   build:
